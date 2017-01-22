@@ -19,6 +19,7 @@ if(!isset($_SESSION['user_id']))
 <h1>ホーム画面</h1><br>
 <a href="./settings">設定</a><br><br>
 <a href="./friend.php">友達リスト</a><br><br>
+<a href="../php/match/match_form.html">ランダムマッチ</a><br><br>
 <a href="../php/sign_out.php">ログアウト</a><br><br>
 <?php
 $user_id = hsc($_SESSION['user_id']);
