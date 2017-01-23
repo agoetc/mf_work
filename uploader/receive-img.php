@@ -42,7 +42,7 @@ if (is_uploaded_file($_FILES['upfile']['tmp_name'])) {
       chmod('./img/cushion'.$filename, 0644);
       //ファイル名をlastInsertIdに変更、クッションページから移動
       if(rename ('./img/cushion'.$filename, './img/'.$id.$ext)){
-            echo $filename."をアップロードしました。";
+      echo 'http://localhost/uploader/img/'.$id;
           }else{
             echo 'アップロードエラー';
           }
