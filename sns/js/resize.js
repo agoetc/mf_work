@@ -1,29 +1,26 @@
-function resize(){
-	areaoj=document.getElementById("message");
-	tval = areaoj.value;//テキストエリアの文字取得
+function resize() {
+	textarea = document.getElementById("message");
+	
+	//テキストエリアの文字取得
+	tval = textarea.value;
 
 	//改行文字の数を取得
-	num = tval.match(/\n|\r\n/g);
+	num = tval.match(/\n|\r|\r\n/g);
 
-//改行文字の数に合せて高さを変更
-	if (tval==""){
-		areaoj.style.height ="1.4em";
+	//改行文字の数に合せて高さを変更
+	if (tval == "") {
+		textarea.style.height = "1.5em";
 		return;
 	}
 	
-	if (num!=null){
-		len = num.length+1;
+	if (num != null) {
+		len = num.length + 1;
 	} else {
-		areaoj.style.height ="1.4em";
+		textarea.style.height = "1.5em";
 		return;
 	}
 	
-	len=len+1;
-	/*
-	if(len==3) {
-		return;
-	}
-	*/
+	len += 1;
 	
-	areaoj.style.height = len * 1.05 + "em";
+	textarea.style.height = len * 1.05 + "em";
 }
