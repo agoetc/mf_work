@@ -1,7 +1,6 @@
 //IE対策
 $.ajaxSetup({ cache: false });
 
-var url = "";
 var from_id = "";
 var to_id = "";
 
