@@ -1,13 +1,11 @@
 <?php
 require "./lib/sanitizing.php";
+require "./lib/connect_db.php";
 session_start();
 
 $user_id = hsc($_SESSION['user_id']);
 
-$dsn = 'mysql:dbname=mf_test;host=localhost';
-$user = 'root';
-$password = '';
-
+//アカウント設定の場合
 if ($_POST['settings_type'] === "account") {
 	$user_name = hsc($_POST['user_name']);
 	$email = hsc($_POST['email']);
@@ -16,10 +14,12 @@ if ($_POST['settings_type'] === "account") {
 
 	try
 	{
-		$dbh = new PDO($dsn, $user, $password);
+		//mf_testに接続
+		$dbh = connect_mf_test();
 		
 		echo '接続に成功しました<br><br>';
 		
+		//ユーザーの情報を編集
 		$sql = 'update user_info set user_name = ?, email = ?, self_intro = ? where user_id = ?';
 	    $stmt = $dbh->prepare($sql);
 	    $stmt->bindValue(1, $user_name, PDO::PARAM_STR);
@@ -33,29 +33,31 @@ if ($_POST['settings_type'] === "account") {
 		print('Error:'.$e->getMessage());
 		die();
 	}
-
-	$stmt = null;
-	$dbh = null;
+//退会処理の場合
 } else if ($_POST['settings_type'] === "withdraw") {
 	try
 	{
-		$dbh = new PDO($dsn, $user, $password);
+		//mf_testに接続
+		$dbh = connect_mf_test();
 		
 		echo '接続に成功しました<br><br>';
 		
+		//user_infoテーブルから削除
 		$sql = 'delete from user_info where user_id = ?';
 	    $stmt = $dbh->prepare($sql);
 	    $stmt->bindValue(1, $user_id, PDO::PARAM_STR);
 	    $flag = $stmt->execute();
 	    
-	    $sql2 = 'delete from friend_list where user_id = ? or friend_id = ?';
-	    $stmt2 = $dbh->prepare($sql2);
-	    $stmt2->bindValue(1, $user_id, PDO::PARAM_STR);
-	    $stmt2->bindValue(2, $user_id, PDO::PARAM_STR);
-	    $flag = $stmt2->execute();
+	    //friend_listテーブルから削除
+	    $sql = 'delete from friend_list where user_id = ? or friend_id = ?';
+	    $stmt = $dbh->prepare($sql);
+	    $stmt->bindValue(1, $user_id, PDO::PARAM_STR);
+	    $stmt->bindValue(2, $user_id, PDO::PARAM_STR);
+	    $flag = $stmt->execute();
 	    
 	    echo '退会しました<br><br>';
 	    
+	    //セッションを破棄
 	    $_SESSION = array(); 
 		session_destroy();
 		
@@ -66,8 +68,8 @@ if ($_POST['settings_type'] === "account") {
 		print('Error:'.$e->getMessage());
 		die();
 	}
-
-	$stmt = null;
-	$stmt2 = null;
-	$dbh = null;
 }
+
+//データベースの接続を閉じる
+$stmt = null;
+$dbh = null;
