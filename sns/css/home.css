@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+body {
+    text-align: center;
+}
+
+
+ul.global_menu {
+	border: 1px solid black;
+	font-size: 0px;
+}
+ul.global_menu li {
+	display: inline-block;
+	font-size: 19px;
+	margin-right: 12px;
+}
+ul.global_menu a {
+	color:#666666;
+	display: block;
+	text-decoration: none;
+}
+
+a:visited { color:#666666; }
+
+#self_intro{
+	display: inline-block;
+	text-align: left;
+}
