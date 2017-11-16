@@ -1,0 +1,12 @@
+body{
+ font-size : 1.2em; /*文字のサイズ*/
+ line-height : 1.4em; /*1行の高さ*/
+}
+
+#message{
+ width : 90%; /*テキストエリアの幅*/
+ height : 1.5em; /*高さ*/
+ font-size : 1.2em; /*文字のサイズ*/
+ line-height : 1.4em; /*1行の高さ*/
+ overflow : hidden; /*スクロールバーを隠す*/
+}

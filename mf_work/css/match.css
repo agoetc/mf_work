@@ -1,0 +1,29 @@
+@charset "utf-8";
+body {
+	text-align: center;
+}
+#self_intro {
+	display: inline-block;
+	text-align: left;
+}
+
+.tag_rank {
+	text-align: left;
+	max-width: 400px;
+  margin: 0 auto;
+font-weight: bold;
+font-family: Poppins;
+letter-spacing: -3px;
+font-size: 20px;
+}
+
+.match_info {
+	text-indent: 1em;
+	opacity: 0.5;
+	text-align: left;;
+	max-width: 150px;
+	margin: 0 auto;
+font-weight: bold;
+	border-bottom: 1px solid #777777;
+
+}

@@ -1,0 +1,76 @@
+@charset "utf-8";
+body {
+	text-align: center;
+}
+
+
+.comu {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+	width: 100vw;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 0;
+
+}
+
+.friend{
+	flex-grow:auto; // もう一方と比較して大きい数字（大きすぎるとIEは計算し損ねる）
+flex-shrink:1;
+flex-basis:300px; //最小幅
+  width:100%;
+	margin: 30px 30px;
+padding: 10px;
+border: medium solid #777777;
+	/*background-color: Blue;*/
+}
+
+.talk{
+	flex-grow:auto; // もう一方と比較して小さい数字
+flex-shrink:1;
+flex-basis:300px; //最小幅
+  width:100%;
+	margin: 30px 30px;
+padding: 10px;
+border: medium solid #777777;
+
+}
+
+.group{
+	flex-grow:auto; // もう一方と比較して小さい数字
+flex-shrink:1;
+flex-basis:300px; //最小幅
+  width:100%;
+	/*background-color: yellow;*/
+	margin: 30px 30px;
+padding: 10px;
+border: medium solid #777777;
+
+}
+
+/*#friend_list {
+	float:left;
+}
+#friend_notif	{
+	float:left;
+}
+#talk_notif {
+	float:left;
+}
+#talk_notif::after{
+	clear: both;
+}
+
+#group_list {
+	float:left;
+}
+
+#group_talk_notif {
+	float:left;
+}*/
+
+/*.menu{
+	display: table-cell;
+}*/

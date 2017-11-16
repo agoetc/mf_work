@@ -1,0 +1,12 @@
+@charset "utf-8";
+body {
+	text-align: center;
+}
+ul.settings_menu {
+	display: inline-block;
+	text-align: left;
+}
+ul.settings_menu li {
+	margin-bottom: 3px;
+	font-size: 19px;
+}

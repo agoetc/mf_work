@@ -1,0 +1,26 @@
+@charset "utf-8";
+a:link {
+	color: #666666;
+}
+a:visited {
+	color: #666666;
+}
+a:hover {
+	color: #87CEEB;
+}
+a:active {
+	color: #87CEEB;
+}
+ul.global_menu {
+	border: 1px solid black;
+	font-size: 0px;
+}
+ul.global_menu li {
+	display: inline-block;
+	font-size: 19px;
+	margin-right: 12px;
+}
+ul.global_menu a {
+	display: block;
+	text-decoration: none;
+}

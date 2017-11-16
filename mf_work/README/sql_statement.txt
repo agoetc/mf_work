@@ -1,0 +1,83 @@
+CREATE DATABASE `mf_test` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `mf_test`;
+
+CREATE TABLE `friend_list` (
+ `user_id` varchar(60) NOT NULL,
+ `friend_id` varchar(60) NOT NULL,
+ PRIMARY KEY (`user_id`,`friend_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `talk_data` (
+ `from_id` varchar(60) NOT NULL,
+ `to_id` varchar(60) NOT NULL,
+ `message` varchar(255) NOT NULL,
+ `num` int(11) NOT NULL AUTO_INCREMENT,
+ PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `user_info` (
+ `user_id` varchar(60) NOT NULL,
+ `user_name` varchar(60) NOT NULL,
+ `email` varchar(60) NOT NULL,
+ `self_intro` varchar(255) DEFAULT NULL,
+ `salt` bigint(20) NOT NULL,
+ `encrypted_password` varchar(60) NOT NULL,
+ PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `friend_notification` (
+ `from_id` varchar(60) NOT NULL,
+ `to_id` varchar(60) NOT NULL,
+ PRIMARY KEY (`from_id`,`to_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `group_list` (
+ `group_id` int(11) NOT NULL AUTO_INCREMENT,
+ `group_name` varchar(60) NOT NULL,
+ `member1` varchar(60) DEFAULT NULL,
+ `member2` varchar(60) DEFAULT NULL,
+ `member3` varchar(60) DEFAULT NULL,
+ `member4` varchar(60) DEFAULT NULL,
+ `member5` varchar(60) DEFAULT NULL,
+ PRIMARY KEY (`group_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `group_talk_data` (
+ `from_id` varchar(60) NOT NULL,
+ `group_id` varchar(60) NOT NULL,
+ `message` varchar(255) NOT NULL,
+ `num` int(11) NOT NULL AUTO_INCREMENT,
+ PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `wait` (
+ `wait_id` int(50) NOT NULL AUTO_INCREMENT,
+ `user_id` varchar(15) DEFAULT NULL,
+ `tag` varchar(60) DEFAULT NULL,
+ PRIMARY KEY (`wait_id`),
+ UNIQUE KEY `user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `notif` (
+ `flg_id` int(11) NOT NULL AUTO_INCREMENT,
+ `from_id` varchar(15) NOT NULL,
+ `to_id` varchar(15) NOT NULL,
+ `read_flg` varchar(15) NOT NULL,
+ PRIMARY KEY (`flg_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `group_notif` (
+ `flg_id` int(11) NOT NULL AUTO_INCREMENT,
+ `user_id` varchar(15) NOT NULL,
+ `group_id` varchar(15) NOT NULL,
+ `read_flg` varchar(15) NOT NULL,
+ PRIMARY KEY (`flg_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `tag_rank` (
+ `tag` varchar(60) NOT NULL,
+ `tag_times` int(10) NOT NULL DEFAULT '1',
+ `tag_ymd` date NOT NULL,
+ PRIMARY KEY (`tag`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
